@@ -301,13 +301,11 @@ var card =
 	    setCardType: function($el, e) {
 	      var cardType;
 	      cardType = e.data;
-	      if (!QJ.hasClass(this.$card, cardType)) {
-	        QJ.removeClass(this.$card, 'jp-card-unknown');
-	        QJ.removeClass(this.$card, this.cardTypes.join(' '));
-	        QJ.addClass(this.$card, "jp-card-" + cardType);
-	        QJ.toggleClass(this.$card, 'jp-card-identified', cardType !== 'unknown');
-	        return this.cardType = cardType;
-	      }
+	      QJ.removeClass(this.$card, 'jp-card-unknown');
+	      QJ.removeClass(this.$card, this.cardTypes.join(' '));
+	      QJ.addClass(this.$card, "jp-card-" + cardType);
+	      QJ.toggleClass(this.$card, 'jp-card-identified', cardType !== 'unknown');
+	      return this.cardType = cardType;
 	    },
 	    flipCard: function() {
 	      return QJ.addClass(this.$card, 'jp-card-flipped');
