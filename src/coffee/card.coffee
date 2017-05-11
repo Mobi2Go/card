@@ -224,11 +224,12 @@ class Card
   handlers:
     setCardType: ($el, e) ->
       cardType = e.data
-      QJ.removeClass @$card, 'jp-card-unknown'
-      QJ.removeClass @$card, @cardTypes.join(' ')
-      QJ.addClass @$card, "jp-card-#{cardType}"
-      QJ.toggleClass @$card, 'jp-card-identified', (cardType isnt 'unknown')
-      @cardType = cardType
+      unless QJ.hasClass @$card, cardType
+        QJ.removeClass @$card, 'jp-card-unknown'
+        QJ.removeClass @$card, @cardTypes.join(' ')
+        QJ.addClass @$card, "jp-card-#{cardType}"
+        QJ.toggleClass @$card, 'jp-card-identified', (cardType isnt 'unknown')
+        @cardType = cardType
     flipCard: ->
       QJ.addClass @$card, 'jp-card-flipped'
     unflipCard: ->
