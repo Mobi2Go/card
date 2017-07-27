@@ -164,8 +164,11 @@ class Card
         filters: expiryFilters
 
     bindVal @$cvcInput, @$cvcDisplay, filters: @validToggler('cardCVC')
-    QJ.on @$cvcInput, 'focus', @handle('flipCard')
-    QJ.on @$cvcInput, 'blur', @handle('unflipCard')
+    if @options.lockOnCvc
+        @handlers.flipCard.apply this
+    else
+        QJ.on @$cvcInput, 'focus', @handle('flipCard')
+        QJ.on @$cvcInput, 'blur', @handle('unflipCard')
 
     bindVal @$nameInput, @$nameDisplay,
         fill: false
